@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+
+ typedef struct Processador {
+    char modelo[50];
+    int nucleos;
+    float velocidadeGHz;
+} PROCESSADOR;
+
+typedef struct PlacaDeVideo {
+    char modelo[50];
+    int memoriaGB;
+    float cloc
+}PLACADEVIDEO;
+
+typedef struct MemoriaRAM {
+    int capacidadeGB;
+    int frequenciaMHz;
+}MEMORIARAM;
+
+typedef struct Equipamento {
+    char modelo[50];
+    struct Processador processador;
+    struct PlacaDeVideo placaVideo;
+    struct MemoriaRAM memoriaRAM; 
+}EQUIPAMENTO;
+
+ void  main() {
+    struct Equipamento theEquipment;
+
+    strcpy(theEquipment.modelo, "Meu Computador");
+    
+    strcpy(theEquipment.processador.modelo, "Intel Core i9");
+    theEquipment.processador.nucleos = 8;
+    theEquipment.processador.velocidadeGHz = 3.5;
+
+    strcpy(theEquipment.placaVideo.modelo, "NVIDIA GeForce GTX 1660");
+    theEquipment.placaVideo.memoriaGB = 6;
+    theEquipment.placaVideo.clockMHz = 1400.0;
+
+    theEquipment.memoriaRAM.capacidadeGB = 16;
+    theEquipment.memoriaRAM.frequenciaMHz = 3200;
+
+    printf("Modelo: %s\n", theEquipment.modelo);
+    
+    printf("Processador: %s, Núcleos: %d, Velocidade: %.2f GHz\n",
+           theEquipment.processador.modelo,
+           theEquipment.processador.nucleos,
+           theEquipment.processador.velocidadeGHz);
+
+    printf("Placa de Vídeo: %s, Memória: %d GB, Clock: %.2f MHz\n",
+           theEquipment.placaVideo.modelo,
+           theEquipment.placaVideo.memoriaGB,
+           theEquipment.placaVideo.clockMHz);
+
+    printf("Memória RAM: %d GB, Frequência: %d MHz\n",
+           theEquipment.memoriaRAM.capacidadeGB,
+           theEquipment.memoriaRAM.frequenciaMHz);
+
+    return 0;
+}
