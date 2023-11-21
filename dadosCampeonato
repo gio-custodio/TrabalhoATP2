@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct Jogador {
+    char nome[60];
+    int idade;
+    int quantidadeTitulos;
+    int posicaoRankMundial;
+}JOGADOR;
+
+typedef struct Equipe {
+    char nome[60];
+    int pontos;
+    int vitorias;
+    int derrotas;
+    int empates;
+    struct Jogador jogadores[1];  
+}EQUIPE;
+
+typedef struct Campeonato {
+    char nome[60];
+    int ano;
+    struct Equipe equipes[5];  
+}CAMPEONATO;
+
+void main() {
+    struct Campeonato theCampions;
+
+    strcpy(theCampions.nome, "Campeonato figther");
+    theCampions.ano = 2023;
+
+    strcpy(theCampions.equipes[0].nome, "Equipe 1");
+    theCampions.equipes[0].vitorias = 3;
+    theCampions.equipes[0].derrotas = 0;
+    theCampions.equipes[0].empates = 1;
+    theCampions.equipes[0].pontos = (theCampions.equipes[0].vitorias * 3) + (theCampions.equipes[0].empates * 1);
+
+
+    strcpy(theCampions.equipes[0].jogadores[0].nome, "Jogador 1");
+    theCampions.equipes[0].jogadores[0].idade = 22;
+    theCampions.equipes[0].jogadores[0].quantidadeTitulos = 1;
+    theCampions.equipes[0].jogadores[0].posicaoRankMundial = 14;
+
+    strcpy(theCampions.equipes[0].jogadores[1].nome, "Jogador 2");
+    theCampions.equipes[0].jogadores[1].idade = 26;
+    theCampions.equipes[0].jogadores[1].quantidadeTitulos = 5;
+    theCampions.equipes[0].jogadores[1].posicaoRankMundial = 4;
+
+    printf("Campeonato: %s\n", theCampions.nome);
+    printf("Ano: %d\n", theCampions.ano);
+
+    for (int i = 0; i < 1; i++) {
+        printf("Equipe: %s\n",theCampions.equipes[i].nome);
+        printf("Pontos: %d\n", theCampions.equipes[i].pontos);
+        printf("Vitórias: %d\n", theCampions.equipes[i].vitorias);
+        printf("Derrotas: %d\n", theCampions.equipes[i].derrotas);
+        printf("Empates: %d\n", theCampions.equipes[i].empates);
+
+        for (int j = 0; j < 2; j++) {
+            printf("  Jogador: %s\n", theCampions.equipes[i].jogadores[j].nome);
+            printf("  Idade: %d anos\n", theCampions.equipes[i].jogadores[j].idade);
+            printf("  Títulos: %d\n", theCampions.equipes[i].jogadores[j].quantidadeTitulos);
+            printf("  Posição no Rank Mundial: %d\n", theCampions.equipes[i].jogadores[j].posicaoRankMundial);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
